@@ -1,5 +1,6 @@
 package com.cognixia.jump;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ProjectRunner {
@@ -83,17 +84,26 @@ public class ProjectRunner {
 
 		System.out.println("Row:");
 
-		int rowInt = input.nextInt();
+		while (true) {
+			try {
+				int rowInt = input.nextInt();
+				
+				result[0] = (rowInt - 1);
+	
+				System.out.println("Col:");
+	
+				int colInt = input.nextInt();
+	
+				result[1] = (colInt - 1);
+	
+				return result;
+			} catch (InputMismatchException e) { 
+				input.next();
+				System.out.println("Please enter a number from 1 to 5");
+				System.out.println("Row:");
+			}
+		}
 
-		result[0] = (rowInt - 1);
-
-		System.out.println("Col:");
-
-		int colInt = input.nextInt();
-
-		result[1] = (colInt - 1);
-
-		return result;
 	}
 
 	public static String userInputForName() {
