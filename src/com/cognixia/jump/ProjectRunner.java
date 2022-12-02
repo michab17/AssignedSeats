@@ -17,8 +17,15 @@ public class ProjectRunner {
 		printTheater(theater);
 		
 		int[] seat = userInputForSeat();
+		String name = userInputForName();
 		
-		System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]);
+		System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1] + "\nWith the name: " + name + "\n");
+		
+		theater[seat[0]][seat[1]] = 'X';
+		
+		printTheater(theater);
+		
+		
 
 	}
 	
@@ -26,7 +33,7 @@ public class ProjectRunner {
 		System.out.println("============");
 		System.out.println("SEATS");
 		System.out.println("============\n");
-		System.out.println("  1  2  3  4  5");
+		System.out.println("   1  2  3  4  5");
 		System.out.println("  --------------");
 		
 		for(int row = 0; row < arr.length ; row++) {
@@ -52,19 +59,31 @@ public class ProjectRunner {
 
 		System.out.println("Row:");
 		
-		String rowString = input.nextLine();
+		int rowInt = input.nextInt();
 		
-		result[0] = Integer.parseInt(rowString);
+		result[0] = (rowInt - 1);
 		
 		System.out.println("Col:");
 		
-		String rowColumn = input.nextLine();
+		int colInt = input.nextInt();
 		
-		result[1] = Integer.parseInt(rowColumn);
+		result[1] = (colInt - 1);
+		
+		//input.close();
+		
+		return result;
+	}
+	
+	public static String userInputForName() {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Please enter a name for the seat: ");
+		
+		String name = input.nextLine();
 		
 		input.close();
 		
-		return result;
+		return name;
 	}
 	
 }
