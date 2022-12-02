@@ -25,24 +25,24 @@ public class ProjectRunner {
 		printTheater(theater);
 
 		boolean bool = true;
-		
+
 		while (bool == true) {
 			if (userInputMoreSeats() == 'y') {
 				seat = userInputForSeat();
 				name = userInputForName();
-				
+
 				if (theater[seat[0]][seat[1]] == 'X') {
 					System.out.println("That seat is already taken. Please choose a different one.");
 					continue;
 				}
-				
+
 				else {
 
 					System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]
 							+ "\nWith the name: " + name + "\n");
-	
+
 					theater[seat[0]][seat[1]] = 'X';
-	
+
 					printTheater(theater);
 				}
 			}
@@ -88,15 +88,26 @@ public class ProjectRunner {
 			try {
 				int rowInt = input.nextInt();
 				
+				while (rowInt > 5) { 
+					System.out.println("Please enter a number from 1 to 5");
+					rowInt = input.nextInt();
+					
+				}
+				
 				result[0] = (rowInt - 1);
 	
 				System.out.println("Col:");
-	
+
 				int colInt = input.nextInt();
-	
+				while (colInt > 5) {
+					System.out.println("Please enter a number from 1 to 5");
+					colInt = input.nextInt();
+				}
+				
 				result[1] = (colInt - 1);
 	
 				return result;
+				
 			} catch (InputMismatchException e) { 
 				input.next();
 				System.out.println("Please enter a number from 1 to 5");
@@ -120,7 +131,7 @@ public class ProjectRunner {
 		boolean bool = true;
 
 		System.out.println("Would you like to select another seat (y/n): ");
-		
+
 		while (bool == true) {
 
 			String decision = input.nextLine().toLowerCase();
