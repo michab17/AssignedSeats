@@ -23,21 +23,24 @@ public class ProjectRunner {
 
 		printTheater(theater);
 
-		while (userInputMoreSeats() == 'y') {
-			seat = userInputForSeat();
-			name = userInputForName();
+		boolean bool = true;
+		
+		while (bool == true) {
+			if (userInputMoreSeats() == 'y') {
+				seat = userInputForSeat();
+				name = userInputForName();
 
-			System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]
-					+ "\nWith the name: " + name + "\n");
+				System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]
+						+ "\nWith the name: " + name + "\n");
 
-			theater[seat[0]][seat[1]] = 'X';
+				theater[seat[0]][seat[1]] = 'X';
 
-			printTheater(theater);
-
-			if (userInputMoreSeats() == 'n') {
-				break;
+				printTheater(theater);
 			}
 
+			else {
+				bool = false;
+			}
 		}
 
 		input.close();
@@ -98,9 +101,9 @@ public class ProjectRunner {
 	public static char userInputMoreSeats() {
 		boolean bool = true;
 
+		System.out.println("Would you like to select another seat (y/n): ");
+		
 		while (bool == true) {
-
-			System.out.println("Would you like to select another seat (y/n): ");
 
 			String decision = input.nextLine().toLowerCase();
 
