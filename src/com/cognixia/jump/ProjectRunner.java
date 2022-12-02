@@ -1,7 +1,6 @@
 package com.cognixia.jump;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class ProjectRunner {
 
@@ -16,6 +15,10 @@ public class ProjectRunner {
 		};
 		
 		printTheater(theater);
+		
+		int[] seat = userInputForSeat();
+		
+		System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]);
 
 	}
 	
@@ -36,8 +39,32 @@ public class ProjectRunner {
 			}
 			System.out.println();
 		}
+		
+		System.out.println("\n");
 	}
 	
-	
+	public static int[] userInputForSeat() {
+		int[] result = new int[2];
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Which seat would you like to reserve");
 
+		System.out.println("Row:");
+		
+		String rowString = input.nextLine();
+		
+		result[0] = Integer.parseInt(rowString);
+		
+		System.out.println("Col:");
+		
+		String rowColumn = input.nextLine();
+		
+		result[1] = Integer.parseInt(rowColumn);
+		
+		input.close();
+		
+		return result;
+	}
+	
 }
