@@ -29,13 +29,21 @@ public class ProjectRunner {
 			if (userInputMoreSeats() == 'y') {
 				seat = userInputForSeat();
 				name = userInputForName();
+				
+				if (theater[seat[0]][seat[1]] == 'X') {
+					System.out.println("That seat is already taken. Please choose a different one.");
+					continue;
+				}
+				
+				else {
 
-				System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]
-						+ "\nWith the name: " + name + "\n");
-
-				theater[seat[0]][seat[1]] = 'X';
-
-				printTheater(theater);
+					System.out.println("The seat you chose was:\n" + "Row " + seat[0] + " " + "Seat " + seat[1]
+							+ "\nWith the name: " + name + "\n");
+	
+					theater[seat[0]][seat[1]] = 'X';
+	
+					printTheater(theater);
+				}
 			}
 
 			else {
